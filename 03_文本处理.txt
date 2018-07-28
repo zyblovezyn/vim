@@ -1,0 +1,224 @@
+查看文本文件：
+	常使用:cat,more,less,less,tail
+	cat:连接并显示
+    linux文本文件的行结束符是$符号
+	cat反过来tac 从后向前显示
+大多数命令的终止符ctrl + c
+分屏显示 more less(和man的用法相似)
+head 查看文件前n行 默认显示10行
+tail查看文件的后n行
+	-f 监视文件，并显示追加在文件上的新内容
+	
+文本处理的命令：
+	cut,join,sed,awk
+	cut 
+	  -d 制定分隔符，默认是空格
+	  -f 制定要显示的字段
+	sort 文本排序
+	  -n:数字排序
+	  -r:逆序
+	  -t:字段分隔符
+	  -k:以哪个字段为准进行排序
+	  -u unique 去重复
+	  -f 忽略字符大小写
+	uniq 去掉相邻的重复的行
+	  -c 显示重复的行数
+	  -d 只显示重复行
+	wc 文本统计 word count
+	tr 转换或删除字符
+	 -d 删除字符集中所有的字符
+bash特性
+  shell 外壳
+  GUI Gnome,KDE Xfce
+  CLI sh csh ksh bash(遵循开源协定) zsh
+  命令光标跳转
+  ctrl+a调到行首
+  ctrl+e调到行尾
+  ctrl+u删除光标到行首的内容
+  ctrl+k 删除光标到行尾的内容
+  ctrl+l 清屏
+  命令历史 history查看历史命令
+   -c 清空命令历史
+   -d -linenum num 从第linenum删除num行
+   -w 将缓冲区的命令保存之历史文件
+   !n 执行命令历史中的第n行命令
+   !!执行上一条命令
+   !str 执行一指定字符串开头的命令
+   !$引用上一个命令的最后一个参数
+   esc,.
+   alt+.
+命令别名
+alias newcommand=oldcommand
+定义的别名只在当前shell的生命周期内有效
+unalias name撤销别名
+命令替换$() 或者使用反引号``
+``命令替换
+""弱引用，可以实现变量替换
+''强引用 不完成变量替换
+
+文件名通配 globing
+* 任意长度的任意字符
+? 任意单个字符
+[] 指定范围内任意单个字符
+[^] 匹配指定范围外的任意单个字符
+[:space:] 空白字符
+[:punct:] 标点符号
+[:lower:] 小写字符
+[:upper:] 大写字母
+[:alpha:] 大小写字母
+[:digit:] 数字
+[:alnum:] 数字和大小写字母
+环境变量
+PATH:命令搜索路径
+HISTSIZE:可以保存多少命令
+进程是程序的副本，也是程序执行的实例
+CLI comamnd line interface
+GUI graphical user interfaces 图形界面 
+
+加密方法
+	对称加密 加密和解密使用同一个密码
+	公钥加密 每个加密都成对出现 一个为公钥(public key) 一个为私钥(secret key)
+	单向加密 散列加密 提取数据特征 常用于数据完整性校验
+		1,雪崩效应
+		2,定长输出
+			MD5:message digest,128位定长输出
+			SHA1 secure hash algorithm,160位定长输出
+
+用户管理:
+useradd [options] username 添加用户
+	-u 指定uid 一般用户uid大于500
+	-g gid指定基本组
+	-G gid,...指定额外组(附加组) 可以指定多个以,号隔开
+	-c 指定注释信息
+	-d /path/to/somewhere 指定家目录
+	-s 指定shell的路径
+	/etc/shells 指定了当前系统可用的安全shell
+	-m -k 创建家目录并把/etc/skel skeleton复制到家目录下
+	-M 不为用户创建家目录
+id
+	-u 显示name
+	-g x显示组
+	-G 
+	-n 显示名称
+userdel 删除用户
+userdel [options] username
+	不指定选项，用户的家目录不会被删除
+	-r 删除用户的同时删除家目录
+finger 查看用户信息和账号路径
+usermod
+	-u 修改用户的uid
+	-g 修改基本组
+	-G 修改附加组,之前有附加组就没有了
+	-G -a 额外添加附加组
+	-d -m 指定到新的家目录
+	-s 
+	-l 修改用户名
+	-L 锁定用户
+	-U 解锁用户
+	-r 添加系统用户
+chsh 修改用户shell
+chfn change finger 修改用户的finger信息，修改注释信息
+
+passwd [username] 修改密码
+	--stdin标准输入
+	-l 锁定账号
+	-u 解锁账号
+	-d 删除用户密码
+groupadd 
+	-g 增加gid
+	-r 添加系统组
+系统用户没有家目录，即使创建了也不会有
+groupmod 修改组
+	-g GID 指定gid
+	-n 制定名称
+groupdel 删除组
+gpasswd给用户组加密码
+newgrp 切换到新的组
+
+pwch 检查用户账号完整性
+	su - username 切换用户
+	
+change
+	-d 最后一次修改时间
+	-E 过期时间
+	-I非活动时间
+	-m 最短使用时间
+	-M 最长使用时间
+	-W 警告时间
+chown username filename...
+	-R 改变目录及目录下的所有文件
+	--reference=source /path/filename... 把path下的文件改成与source一样
+	username:grpname file,...及改属主又该属组
+chmod 修改文件的权限
+	chmod mode filename,...
+	-R
+	--reference=path/filename file,...
+	chmod username=mode file,...修改一类用户的权限
+	chmod g=mode file,...组权限
+	chmod o=mode file,...修改其他用户权限
+	chmod g=r,o=r file,...
+	chmod go=r file,...修改组和其他用户的权限
+	u,g,o,a
+	chmod 用户类别+|mode file,...
+	  chmod u-x,g-x,o-x /path/filename
+chgrp grpname file,... 改变属组
+	-R
+	--reference=souce path/filename
+
+umask 显示文件权限信息 0022 第一位的0不用管 022 对应的文件执行权限是644 文件默认不能执行
+文件 666
+目录 777
+
+shell的类型
+	登陆shell
+	正常登陆的shell
+	su - username 安全切换
+	su -l username
+	非登录shell
+	su username
+	图形终端下打开命令窗口
+	自定执行的shell
+bash 配置文件
+	全局配置:/etc/profile,/etc/profile.d/*.sh,/etc/bashrc
+	个人配置:~/.bash_profile,~/.bashrc
+	
+	profile类的文件
+		设定环境变量
+		运行命令或脚本
+	bashrc 
+			用于设定本地变量
+			定义命令别名
+登陆shell
+	先读取/etc/profile-->/etc/profile.d/*.sh -->~/.bash_profile-->~/.bashrc-->/etc/bashrc
+非登陆shell
+	~/.bashrc-->/etc/bashrc-->/etc/profile.d/*.sh
+	
+默认输出设备 STDOUT,1
+默认输入设备　STDIN,0
+标准错误输出 STDERR 2
+标准输入 键盘
+标准输出和错误输出都是显示器
+I/O重定向
+输出> 覆盖输出,原有内容会被覆盖掉
+输入<
+>>追加输出,保留原有内容，追加到后面
+set -C 禁止对已经存在的文件使用覆盖重定向
+set +C 关闭上述功能
+2>错误输出重定向
+2>>错误输出重定向 以追加方式
+&>重定向正确输出或重定向正确输出
+< 输入重定向
+<< 在此处生成文档 
+cat >> /path/filename <<EOF 用于生成文档
+管道 命令也可以用于输出管道
+命令1|命令2|命令3...
+前一个命令的输出当作后一个命令的输入
+复习环境便量
+	PATH
+	HISTSIZE
+	SHELL 保存当前用户的默认shell
+添加用户 useradd username
+添加组 groupadd groupname	
+  
+	
+	

@@ -1,0 +1,74 @@
+httpd
+    事先创建进程 按需创建适当的进程
+    模块化设计，核心比较小，各种功能都模块添加(包括php)
+    支持运行时配置，支持单独编译模块
+    支持多种方式的虚拟主机配置
+        虚拟主机
+            基于IP的虚拟主机
+            基于端口的虚拟主机
+            基于域名的虚拟主机
+    支持https协议
+    支持用户认证
+    支持访问控制机制ACL
+    支持每目录的访问控制
+    支持url重写
+查看系统上的包
+    yum list all http* 查看所有的以http开头的包有哪些
+
+    httpd:SELinux控制(事先让SELinux处于permisive或disable状态) 不然很多配置服务试用
+    getenforce 查看mode of SELinux
+    setenforce 0 当前状态有效
+    vim /etc/selinux/config 修改SELINUX＝permissive 则永久有效
+
+    httpd:
+        安装完成之后在. /usr/sbin/httpd  进程也叫httpd(MPM:prefork 多道处理模式)
+        httpd 属主 属组 均为root 主导进程(master process)
+        httpd apche apche 工作进程(worker process)
+        port:端口80/tcp (ssl:443/tcp)
+        工作跟根目录 /etc/httpd,相当于程序安装目录
+        /etc/httpd/config 主配置文件
+        /etc/httpd/conf.d/*.cong 因为配置文件比较多被分段了，所有的配置文件均在此目录下
+        /etc/httpd/modules:模块目录,这是一个目录的链接
+        /etc/httpd/logs-->/var/log/httpd:日志目录
+        日志文件有两类 访问日志access_log 错误日志err_log
+        页面一般放在 /var/www/
+                            html   静态页面
+                            cgi-bin apche提供动态内容所使用的
+cgi:common gateway interface
+    流程如下
+    client-->httpd(index.cgi)-->spawn process(index.cgi)-->httpd-->client
+
+    安装httpd yum -y install httpd
+    查看安装了哪些文件 rpm -ql httpd | less
+ngix 反向代理
+
+
+MPM:multi path modules
+    mpm_winnt
+    prefork 一个请求用一个进程响应
+    worker 一个请求用一个线程响应 启动多个进程,每个进程生成多个线程,缺点资源争用
+    event (一个进程处理多个请求)
+
+    options
+        None 不支持任何选项
+        Indexes 允许索引目录
+        FollowSymLinks 允许访问符号连接指向的源文件
+        Includes 允许执行服务器端包含(ssi)
+        ExecCGI 允许运行CGI脚本
+        All 支持所有选项
+    Order 访问控制功能
+        Order allow deny
+        allow from 192.168.0.0/24
+
+        Order deny allow      
+        deny from 192.168.0.0/24
+
+    httpd -t 语法检查
+    elinks 文本格式网页浏览器
+        -dump 退出不再交互
+        -source 网页源码
+
+    虚拟主机的定义(虚拟主机和中心主机不能同时使用,取消虚拟主机,注释DocumentRoot即可)
+        <VirtualHost HOST>
+
+        </VirtualHost HOST>

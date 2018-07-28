@@ -1,0 +1,146 @@
+	操作系统和常用命令
+ls 命令：
+	-l 长文件格式
+	文件类型：
+	 - 普通文件 file
+	 d 目录 directory
+	 l 符号链接文件 symbolic link file
+	 b 块设备文件 block
+	 c 字符设备文件 character
+	 p 命令管道 pipe
+	 s 套接字文件 socket
+	 文件权限
+	 r-read w-write x-execute
+	 -h humanreadable 单位换算
+	 -a all 所有文件 linux中隐藏文件以.开头
+	 . 表示当前目录
+	 ..表示父目录
+​
+	-A 显示所有，但是不包含.和..
+	-d 显示目录自身属性
+	-i index node,inode 显示文件的索引节点号
+	-r 逆序显示文件
+	-R 递归（recursion）显示
+
+cd 命令 切换目录 change directory 
+	cd 不带任何参数，切换到家目录，主目录
+	cd ~username 切换到username的家目录（管理员能用）
+	cd - 在当前目录之间来回切换
+type 命令 显示命令类型：内置命令 外置命令
+	外置命令：在文件系统的某个路径下有一个与命令名称相应的可执行文件
+	环境变量：命名的内存空间
+printenv 显示当前环境变量
+hash 缓存 记录用过的所有命令
+date 命令用于时间管理
+linux:时间实现方式，rtc real time clock 实时时间，晶体震荡
+时间。ntp network time protocol
+linux开机有：硬件时间和系统时间(时间未必一致)，软件模拟时间
+hwclock:命令 硬件时间
+如何获得命令的使用帮助：help command
+如何获得外部命令帮助：command --help
+命令使用手册：manual
+输出字符集不匹配时：export LANG=en 即可
+man命令：man comamnd 打开命令使用shouce
+man 分章节：常见章节有八个：
+man 2 ls 显示第二章节
+如何查看命令在第几章节，whatis read
+	1、用户命令
+	2、系统调用
+	3、库调用
+	4、特殊文件(设备文件都是特殊文件，设备文件不是真的文件，作为为
+	   访问设备入口存在)
+	5、文件格式(配置文件的语法)
+	6、游戏
+	7、不变归类的杂项
+	8、管理命令(/sbin,/usr/sbin,/usr/local/sbin) 可以用来修改
+	硬件特性。
+[]可选 
+<>必选 
+..可以出现多次 	
+| 多选一
+{} 分组 没有特殊意义
+man:
+	name:命令名称及简要说明
+	synopsis:概要，包括可用选项
+	description:详尽说明
+	options:说明每一项的意义
+	files:此命令相关的配置文件
+	bugs:
+	example:使用示例
+	see also:另见，另外参照
+	
+	向后翻一屏：space
+	向前翻一屏：b
+	向后翻一行：enter
+	向前翻一行：k
+查找：/keyword 自前向后
+	  /?keyword 自后向前
+	  n:下一个
+	  N：前一个
+	  q:退出
+hwclock 默认显示硬件时间  
+	-w:把系统时间同步到硬件时间
+    -s:读取硬件时间到系统
+在线手册:
+info command
+cal calender日历
+windows:PE 可执行文件
+linux:ELF excutable and linkable format
+	/boot:系统启动相关文件	    如内核、initrd、以及grub(bootleader)
+	/dev device:设备文件
+		在linux下一切皆文件
+		块设备：随机访问,数据块设备
+		字符设备：线性访问,逐个字符访问
+		设备的设备号,没有大小,主设备号(major),次设备号(minor)
+	/etc 配置文件
+	/home 用户的家目录 通常默认/home/username
+	/root root用户没有家目录，一般认为/root是管理员的家目录
+	/lib 库文件
+		/lib/modules 内核模块文件
+		动态库(.so share object)和静态库两种
+	/media 挂载移动设备
+	/mnt 额外的临时文件
+		挂载点目录 把设备关联到设备树上的某一个节点就叫挂载
+	/misc 杂项
+	/opt 可选目录 早期第三方程序安装目录
+	/proc 伪文件 启动之前为空,启动以后不为空，内核映射文件
+		用于性能监控、性能调优
+	/sys 伪文件 跟硬件设备相关的映射文件
+	/tmp 临时文件 一个月没人访问自动删除
+	/var 可变化的文件
+	/bin binary 可执行文件 用户命令
+	/sbin 管理命令
+	/usr 全局共享只读文件 universal share read-only
+		/usr/bin
+		/usr/sbin
+		/usr/lib
+		/usr/local
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+	
+	
+
+	
+	
+
+
+
+
+
+	
+	
+	

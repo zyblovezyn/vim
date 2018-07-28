@@ -1,0 +1,52 @@
+<insert id="insertLinst">
+	insert into sys_user(
+	values
+	<foreach collection="list" item="user" separator=",">
+     (
+        #{user.name},#{user.age}
+     )
+	</foreach>
+
+</insert>
+
+mysql 查询优化 最主要的就是创建索引
+数据行保存在数据文件，索引则保留在索引文件，同一个表的索引保存在同一索引文件中
+创建索引 alter table table_name add index (column_name)
+输入表名称table_name和列名称column_name就添加索引了。
+
+explain select * from table_name 可以分析查询语句
+
+当参数是Map类型的时候，foreach标签的index属性对应的是不是索引值，而是Map中的key
+
+<update id="updateByMap">
+    update sys_user
+    set
+    <foreach collection="_parameters" item="val" index="key" separator=",">
+        ${key}=#{val}
+    </foreach>
+    where id=#{id};
+</update>
+
+bind用法
+<if test="userName != null and userName != ''">
+    <bind name="userNameLike" value="'%'+userName+'%'"/>
+    and userName like #{userNameLike}
+</if>
+
+mybatis缓存配置
+<cache 
+    eviction="FIFO"
+    flushInterval="60000"
+    size="512"
+    readOnly />
+创建了一个FIFO缓存，并每隔60秒刷新一次，存储集合或或对象的512个引用，并且返回对象被认为是可读的
+cache可以配置的属性如下：
+    eviction(回收策略)
+        LRU 最近最少使用 移除长时间不被引用的对象，是默认值
+        FIFO 先进先出
+        SOFT 软引用 移除基于垃圾回收器状态和软引用规则对象
+        WEAK 弱引用 更积极地移除基于垃圾回收器状态和软引用规则对象
+
+
+
+

@@ -1,0 +1,99 @@
+shell编程
+	脚本语言
+	
+高级语言
+	动态语言 编译型语言
+		强类型
+	动态语言 解释型语言
+		弱类型
+shell脚本面向过程
+bash 变量类型
+	环境变量
+	本地变量
+	位置变量
+	特殊变量
+变量替换及引用变量
+${varname} 花括号可以省略
+VARNAME=value 作用域为整个shell
+local VARNAME=value 作用域为当前代码段
+
+环境变量 作用域为当前shell以及子进程
+环境声明 export varnam=value 导出
+
+脚本在执行时会启动一个子shell进程
+	命令行中启动的脚本会继承当前shell环境变量
+	系统自动执行的脚本(非命令行启动,跟命令行无关)
+1,let 算术运算表达式
+	let C=$A+$B
+2,$[算术表达式]
+	C=$[$A+$B]
+3,$((算术表达式))
+4,expr命令 expr 算术表达式
+	C=`expr $A + $B`
+exit 退出脚本
+
+bash常用的3种测试条件
+	整数测试
+	[ expression ] 命令
+	[[ expression ]] 关键字
+	test expression 命令 
+	-gt 大于
+	-le 小于
+	-ne 不等于
+	-eq 等于
+	-ge 大于等于
+	-lt 小于等于
+文件测试
+	-e file 测试文件是否存在
+	-f file 测试文件是否为普通文件
+	-d file 测试指定路径是否为目录
+	-r file 指定文件对当前用户是否有读权限
+	-w file 指定文件对当前用户是否有写权限
+	-x file 指定文件对当前用户是否有执行权限
+	[ -e /etc/inittab ] 测试文件是否存在
+if 判断条件;then
+	statement1
+elif 判断条件;then 
+ statement2;
+elif 判断条件;then
+	statement3
+fi
+
+bash -n file 测试简本语法错误
+bash -x file 单步执行
+pwd print name of current working directory
+cd change directory
+ls list directory contents
+hierarchical directory structure
+
+定义退出状态码,如果没有定义状态退出码，那么最后一条语句执行的状态就是程序退出码。
+
+bash 变量的类型
+	本地变量
+	环境变量
+	位置变量 
+		$1,$2...
+		shift 踢出参数
+	特殊变量 
+		$? 上一条语句的退出状态
+		$# 参数个数
+		$* 参数列表
+		$@ 参数列表
+sed stream editor 流编辑器
+	操作范围 行 逐行处理文本
+	
+	
+	
+
+
+
+	
+
+
+
+	
+
+
+
+
+

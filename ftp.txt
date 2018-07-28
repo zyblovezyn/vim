@@ -1,0 +1,74 @@
+ftp file transfer protocol 
+    21/tcp
+在各个主机之间完成文件共享服务 应用成层
+rpc remote procedure call 远程过程调用 基于二进制格式
+nfs 依赖于rpc的工作方式 network file system
+samba:cifs/smb,
+ftp 基于tcp实现 有两个连接
+    命令连接,控制连接 21/tcp
+    数据连接 
+       主动模式 20/tcp 看数据连接是谁发起的 服务器20端口主动连接客户端
+       被动模式 端口随机
+       服务器通过命令端口发送命令,告诉客户端来连接服务器的那个端口(在linux上一般大于5000的),客户端发送连接请求.
+    数据传输模式(自动模式)
+        有二进制和文本
+        ftp server --> ftp client 遵循文件本身特性
+
+结构化数据
+半结构化数据
+非结构化数据
+
+能够实现ftp的服务器端软件
+    wu-ftpd 华盛顿大学的ftp
+    redhat上vsftpd very secure ftp daemon
+    proftpd 功能丰富
+    pureftpd 
+    filezilla
+
+    windows上的 serv-U
+        filezilla
+客户端程序
+    cli
+        ftp
+        lftp
+    GUI:
+        gftpd
+        flashFXP
+        cuteftp
+        filezillia
+
+vsftpd 是服务器端
+    /etc/vsftpd:配置文件
+    /etc/init.d/vsftpd 服务脚本
+    /usr/sbin/vsftpd 主程序
+
+    基于PAM实现用户认证
+        /etc/pam.d/*
+        /lib/security/*
+        /lib64/security/*
+    支持虚拟用户
+
+vsftpd 受selinux控制
+    /var/ftp 作为文件目录 
+上传和下载
+    其他用户没有写权限
+ftp的用户
+    匿名用户 --> 有一个与之对应的系统用户
+    虚拟用户 --> 有与之对应的系统用户
+    系统用户
+
+/var/ftp:ftp的家目录
+    匿名用户访问目录
+
+chroot 禁锢用户于其家目录
+
+系统用户
+文件服务权限取决于:文件系统权限*文件共享权限
+创建用户和设置密码
+useradd username
+echo password | passwd --stdin username
+守护进程
+    独立守护进程
+    瞬时守护进程,是有超级守护进程管理的
+
+

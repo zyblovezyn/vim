@@ -1,0 +1,25 @@
+sed 'addresscommand' file...
+	address 
+	  1,startline 起始行 比如1,100
+	  2,/regexp/ 正则表达式 /^root/
+	  3,/pattern1/,/pattern2/ 第一次被pattern1至第一次被pattern2匹配的行中间的所有行
+	  4,linenumber 精确匹配
+	    $表示最后一行
+	  5,startline,+n从startline开始n+1行
+	  -n 静默 只显示符合条件的
+	  -i 直接修改源文件
+	  -e script 可以同时执行多个脚本
+	  -f 指定文件
+	  -r 表示使用扩张正则表达式
+comamnd
+	d 表示删除符合条件的行
+	p 显示符合条件的行  
+	a \string 在指定行后面追加新行,内容为string
+	i \string 在指定的行前面添加新行 \n 可以换行
+	r file 将指定文件的内容添加至符合条件的行处
+	w file 将指定范围内的内容保存至指定文件
+	s /pattern/string/查找并替换 每一行第一次匹配到的字符串
+	  /pattern/string/g全局替换
+	  /pattern/string/i 忽略大小写
+	& 引用模式匹配到的串
+	
