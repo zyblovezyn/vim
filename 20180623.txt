@@ -1,0 +1,10 @@
+SIGHUP 1 Hangup
+SIGINT 2 Interrupt from keyboard
+SIGKILL 9 Kill signal
+SIGTERM 15 Termination signal
+SIGSTOP 17, 19, 23 Stop the process
+
+df 显示磁盘文件的大小,显示总的
+  df -h path
+du 显示详细的
+  du -h path | grep "log$" | sort -nr | head -n 10
