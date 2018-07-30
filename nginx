@@ -1,0 +1,24 @@
+cat /proc/cpuinfo 查看cpu信息
+physical id 显示cpu物理个数
+cpu cores 每个物理cpu中的core的个数
+processor 逻辑cpu的个数
+
+查看内存信息
+cat /proc/meminfo
+nginx 纯虚拟
+    server{} 虚拟主机
+    如果server_name 相同监听listen的端口不同相同
+
+httpd的配置文件
+    <documentRoot "">
+    </DocumentRoot> 定义页面的位置,本地文件路径
+    <location "/">
+        root ""
+    </location> 基于URI路径 网页位置的路径
+location URI{} 对当前路径及子路径下的所有对象都生效
+location = URI {} 只对当前文件生效,不包括子路径
+location ~ URI {} 你模式匹配,区分大小写
+location ~* URI {} 模式匹配,可使用正则表达式匹配,不区分
+
+
+

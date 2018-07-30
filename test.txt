@@ -1,22 +1,14 @@
 nglish is a west germanic language that was first spoken in early medieval england and is now a global lingua franca.[4][5] named after the angles, one of the germanic tribes that migrated to england, it ultimately derives its name from the anglia peninsula in the baltic sea. it is closely related to the frisian languages, but its vocabulary has been significantly influenced by other germanic languages, particularly norse (a north germanic language), as well as by latin and french.[6]
-
 glish has developed over the course of more than 1,400 years. the earliest forms of english, a set of anglo-frisian dialects brought to great britain by anglo-saxon settlers in the 5th century, are called old english. middle english began in the late 11th century with the norman conquest of england and was a period in which the language was influenced by french.[7] early modern english began in the late 15th century with the introduction of the printing press to london, the printing of the king james bible and the start of the great vowel shift.[8]
-
 influence of the british empire, modern english spread around the world from the 17th to mid-20th centuries. through all types of printed and electronic media, and spurred by the emergence of the united states as a global superpower, english has become the leading language of international discourse and the lingua franca in many regions and professional contexts such as science, navigation and law.[9]
-
 nglish is the third most spoken native language in the world, after standard chinese and spanish.[10] it is the most widely learned second language and is either the official language or one of the official languages in almost 60 sovereign states. there are more people who have learned it as a second language than there are native speakers. english is the most commonly spoken language in the united kingdom, the united states, canada, australia, ireland and new zealand, and it is widely spoken in some areas of the caribbean, africa and south asia.[11] it is a co-official language of the united nations, the european union and many other world and regional international organisations. It is the most widely spoken Germanic language, accounting for at least 70% of speakers of this Indo-European branch. English has a vast vocabulary, though counting how many words any language has is impossible.[12][13] English speakers are called "Anglophones".
-
-
-
 abc def fhi jkl
-
 abc def fhi jkl
 1  
 1abc def fhi jkl1
 2abc def fhi jkl
 3abc def fhi jkl
 4abc def fhi jkl
-
 1abc def fhi jkl
 2abc def fhi jkl
 3abc def fhi jkl
@@ -27,3 +19,44 @@ abc def fhi jkl
 3abc def fhi jkl
 4abc def fhi jkl
 abc abc fhi fhi fhi fhi fhi fhi abc abc fhi abc 
+- d b c s l p 我知道的7中
+read write execute -h .
+.file
+. 
+..
+-A -a的区别
+-d -i 
+-r
+-R
+0 in
+1 out
+2 err
+>
+>>
+set -C
+set +C
+2>
+2>>
+1>
+1>>
+&>
+<
+<<
+space
+punct
+digit
+alpha
+alnum
+lower
+upper
+""
+''
+``
+alias
+$()
+$(())
+if kjdsac 
+    then
+elif
+then
+if
